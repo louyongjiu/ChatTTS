@@ -160,6 +160,7 @@ def refine_text(
 def generate_audio(
     text,
     temperature,
+    speed,
     top_P,
     top_K,
     spk_emb_text: str,
@@ -175,6 +176,7 @@ def generate_audio(
         return None
 
     params_infer_code = ChatTTS.Chat.InferCodeParams(
+        prompt = f"[speed_{speed}]",
         spk_emb=spk_emb_text,
         temperature=temperature,
         top_P=top_P,

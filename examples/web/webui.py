@@ -63,6 +63,14 @@ def main():
             refine_text_checkbox = gr.Checkbox(
                 label="Refine text", value=ex[0][6], interactive=True
             )
+            speed_slider = gr.Slider(
+                minimum=1,
+                maximum=10,
+                step=1,
+                value=5,
+                label="Speed",
+                interactive=True,
+            )
             temperature_slider = gr.Slider(
                 minimum=0.00001,
                 maximum=1.0,
@@ -199,6 +207,7 @@ def main():
                 streaming=stream,
                 interactive=False,
                 show_label=True,
+                show_download_button=True,
                 waveform_options=gr.WaveformOptions(
                     sample_rate=24000,
                 ),
@@ -224,6 +233,7 @@ def main():
                 inputs=[
                     text_output,
                     temperature_slider,
+                    speed_slider,
                     top_p_slider,
                     top_k_slider,
                     spk_emb_text,
